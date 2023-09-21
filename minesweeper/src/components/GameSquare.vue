@@ -1,12 +1,12 @@
 <template>
   <div class="gamesquare">
-
+    {{ value }}
   </div>
 </template>
 
 <script>
 export default {
-
+  props: ['value']
 }
 </script>
 
