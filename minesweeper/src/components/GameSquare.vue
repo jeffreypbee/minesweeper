@@ -1,7 +1,7 @@
 <template>
   <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare" @contextmenu.prevent="toggleFlagged">
-    <span v-if="flagged">F</span>
-    <span v-if="revealed">{{ valueToDisplay }}</span>
+    <div v-if="flagged">F</div>
+    <div v-if="revealed" :style="{color: color}">{{ valueToDisplay }}</div>
   </div>
 </template>
 
@@ -20,6 +20,18 @@ export default {
     },
     flagged() {
       return this.isInArray(this.$store.state.flagged);
+    },
+    color() {
+      switch(this.value) {
+        case 1: return 'blue';
+        case 2: return 'green';
+        case 3: return 'yellow';
+        case 4: return 'orange';
+        case 5: return 'red';
+        case 6: return 'purple';
+        case 7: return 'pink';
+        default: return 'black';
+      }
     }
   },
   methods: {
@@ -29,9 +41,11 @@ export default {
       this.$store.commit('toggleFlagged', {x, y});
     },
     revealSquare() {
-      const x = this.x;
-      const y = this.y;
-      this.$store.commit('revealSquare', {x, y});
+      if (!this.flagged) {
+        const x = this.x;
+        const y = this.y;
+        this.$store.commit('revealSquare', {x, y});
+      }      
     },
     isInArray(array) {
       const x = this.x;
@@ -48,13 +62,19 @@ export default {
     height: 30px;
     background-color: gray;
     margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
 }
 
 .gamesquare.revealed {
-  background-color: white;
+  background-color: #222;
 }
 
 .gamesquare:hover {
     cursor: pointer;
 }
+
 </style>
