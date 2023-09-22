@@ -13,6 +13,23 @@ export default new Vuex.Store({
   mutations: {
     revealSquare(state, payload) {
       state.revealed.push(payload);
+      const x = payload.x;
+      const y = payload.y;
+      if (state.gameboard[x][y] === 0) {
+        for (let i = x-1; i < x+2; i++) {
+          if (i >= 0 && i < state.gameboard.length) {
+            for (let j = y-1; j < y+2; j++) {
+              if (j >= 0 && j < state.gameboard[i].length) {
+                if (i !== x || j !== y) {
+                  if (!state.revealed.some(e => e.x === i && e.y === j)) {
+                    this.commit('revealSquare', {x: i, y: j});
+                  }                  
+                }
+              }                
+            }
+          }            
+        }
+      }
     },
     createGameboard(state, payload) {
       let arr = [];
