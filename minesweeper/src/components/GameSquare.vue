@@ -1,12 +1,20 @@
 <template>
   <div class="gamesquare">
-    {{ value }}
+    {{ valueToDisplay }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ['value']
+  props: ['value'],
+  computed: {
+    valueToDisplay() {
+      if (this.value === 0) {
+        return '';
+      }
+      return this.value;
+    }
+  }
 }
 </script>
 
