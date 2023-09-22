@@ -6,11 +6,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     gameboard: [],
-    revealed: []
+    revealed: [],
+    flagged: []
   },
   getters: {
   },
   mutations: {
+    toggleFlagged(state, payload) {
+      const x = payload.x;
+      const y = payload.y;
+      if (state.flagged.some(e => e.x === x && e.y === y)) {
+        state.flagged.splice(state.flagged.findIndex(f => f.x === x && f.y === y), 1);
+      } else {
+        state.flagged.push({x, y});
+      }
+    },
     revealSquare(state, payload) {
       state.revealed.push(payload);
       const x = payload.x;

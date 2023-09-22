@@ -1,5 +1,6 @@
 <template>
-  <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare">
+  <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare" @contextmenu.prevent="toggleFlagged">
+    <span v-if="flagged">F</span>
     <span v-if="revealed">{{ valueToDisplay }}</span>
   </div>
 </template>
@@ -16,9 +17,17 @@ export default {
     },
     revealed() {
       return this.isInArray(this.$store.state.revealed);
+    },
+    flagged() {
+      return this.isInArray(this.$store.state.flagged);
     }
   },
   methods: {
+    toggleFlagged() {
+      const x = this.x;
+      const y = this.y;
+      this.$store.commit('toggleFlagged', {x, y});
+    },
     revealSquare() {
       const x = this.x;
       const y = this.y;
