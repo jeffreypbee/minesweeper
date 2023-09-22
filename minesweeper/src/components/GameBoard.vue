@@ -1,7 +1,7 @@
 <template>
   <div id="gameboard">
     <div v-for="(row, rowIndex) in $store.state.gameboard" :key="`gamerow-${rowIndex}`" class="gameboardrow">
-        <GameSquare v-for="(column, columnIndex) in row" :key="`gamesquare-${rowIndex}-${columnIndex}`" :value="column" />
+        <GameSquare v-for="(column, columnIndex) in row" :key="`gamesquare-${rowIndex}-${columnIndex}`" :value="column" :x="rowIndex" :y="columnIndex" />
     </div>
     
   </div>

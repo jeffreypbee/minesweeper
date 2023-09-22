@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    gameboard: []
+    gameboard: [],
+    revealed: []
   },
   getters: {
   },
   mutations: {
+    revealSquare(state, payload) {
+      state.revealed.push(payload);
+    },
     createGameboard(state, payload) {
       let arr = [];
 
