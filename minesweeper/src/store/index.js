@@ -53,7 +53,8 @@ export default new Vuex.Store({
       }
 
       // Calculate number of mines
-      let mineCount = payload.rows / payload.columns * 10;
+      let mineCount = payload.rows * payload.columns / 8;
+      console.log(mineCount);
 
       // Place mines in squares
       while (mineCount > 0) {

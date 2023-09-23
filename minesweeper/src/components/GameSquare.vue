@@ -36,9 +36,11 @@ export default {
   },
   methods: {
     toggleFlagged() {
-      const x = this.x;
-      const y = this.y;
-      this.$store.commit('toggleFlagged', {x, y});
+      if (!this.revealed) {
+        const x = this.x;
+        const y = this.y;
+        this.$store.commit('toggleFlagged', {x, y});
+      }      
     },
     revealSquare() {
       if (!this.flagged) {
