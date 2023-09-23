@@ -62,17 +62,21 @@ export default {
 .gamesquare {
     width: 30px;
     height: 30px;
-    background-color: gray;
+    border: 1px solid darkred;
+    background: linear-gradient(to bottom, yellow, goldenrod);
     margin: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
 }
 
 .gamesquare.revealed {
-  background-color: #222;
+  border: 1px solid transparent;
+  background: unset;
 }
 
 .gamesquare:hover {

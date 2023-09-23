@@ -30,6 +30,10 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background: linear-gradient(to bottom, #0001, #0004);
+    padding: 10px;
+    border-radius: 20px;
+
 }
 
 .gameboardrow {

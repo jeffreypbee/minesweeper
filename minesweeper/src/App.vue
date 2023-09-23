@@ -16,7 +16,7 @@
 
 <style>
 body {
-  background-color: #333;
+  background-color: #221133;
   color: #eee;
   height: 100%;
   padding: 0px;
@@ -40,14 +40,19 @@ body {
 
 header {
   grid-area: header;
-  border-bottom: 1px solid gray;
 }
 
 header h1 {
   grid-area: header;
+  font-family: Impact;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 2.5rem;
   color: #eedd33;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   margin: 3px 5px;
+  background: linear-gradient(to bottom, yellow, goldenrod);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 main {
