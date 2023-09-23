@@ -29,6 +29,7 @@ export default {
 #gameboard {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .gameboardrow {
