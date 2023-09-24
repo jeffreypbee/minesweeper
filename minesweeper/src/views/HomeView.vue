@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <GameBoard rows="10" columns="10" />
+    <GameBoard rows="25" columns="25" />
   </div>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <header><h1>MINESWEEPER</h1></header>
-    <aside id="newgame">
+    <aside id="newgame" class="gradientbg">
       <h2>New Game</h2>
     </aside>
     <main>
       <router-view/>
     </main>
-    <aside id="instructions">
+    <aside id="instructions" class="gradientbg">
       <h2>Instructions</h2>
     </aside>
     <footer>Copyright &copy; 2023 Jeffrey Bee</footer>
@@ -16,7 +16,9 @@
 
 <style>
 body {
-  background-color: #221133;
+  background-color: #171125;
+  background-image: linear-gradient(to bottom, #33114400, #553344ff);
+  background-attachment: fixed;
   color: #eee;
   height: 100%;
   padding: 0px;
@@ -26,12 +28,12 @@ body {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
   height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 20% 1fr 20%;
-  grid-template-rows: 5% 1fr 5%;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas: "header header header"
                         "newgame main instructions"
                         "footer footer footer";
@@ -52,7 +54,7 @@ header h1 {
   margin: 3px 5px;
   background: linear-gradient(to bottom, yellow, goldenrod);
   -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 main {
@@ -61,14 +63,16 @@ main {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  height: 100%;
 }
 
 footer {
   grid-area: footer;
-  text-align: center;
-  color: gray;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   font-size: .8rem;
+  padding: 3px;
 }
 
 nav {
@@ -90,5 +94,17 @@ nav a.router-link-exact-active {
 
 #instructions {
   grid-area: instructions;
+}
+
+aside h2 {
+  margin: 2px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.gradientbg {
+  background: linear-gradient(to bottom, #0001, #0004);
+  padding: 10px;
+  border-radius: 20px;
 }
 </style>
