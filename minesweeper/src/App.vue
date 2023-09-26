@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <header><h1>MINESWEEPER</h1></header>
-    <aside id="newgame" class="gradientbg">
-      <h2>New Game</h2>
-    </aside>
+    <header>
+      <h1>MINESWEEPER</h1>
+      <nav>
+        <button>New Game</button>
+      </nav>
+    </header>
+    
     <main>
       <router-view/>
     </main>
-    <aside id="instructions" class="gradientbg">
-      <h2>Instructions</h2>
-    </aside>
+    
     <footer>Copyright &copy; 2023 Jeffrey Bee</footer>
   </div>
 </template>
@@ -35,13 +36,16 @@ body {
   grid-template-columns: 20% 1fr 20%;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header header header"
-                        "newgame main instructions"
+                        ". main ."
                         "footer footer footer";
   justify-content: center;
 }
 
 header {
   grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
@@ -52,9 +56,21 @@ header h1 {
   font-size: 2.5rem;
   color: #eedd33;
   margin: 3px 5px;
+  padding: 0px 7px;
   background: linear-gradient(to bottom, yellow, goldenrod);
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+nav button {
+  background: linear-gradient(to bottom, yellow, goldenrod);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+nav button:hover {
+  cursor: pointer;
 }
 
 main {
@@ -86,14 +102,6 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
-}
-
-#newgame {
-  grid-area: newgame;
-}
-
-#instructions {
-  grid-area: instructions;
 }
 
 aside h2 {
