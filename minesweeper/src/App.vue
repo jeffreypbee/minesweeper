@@ -43,6 +43,7 @@ body {
 
 header {
   grid-area: header;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,6 +68,8 @@ nav button {
   border: none;
   border-radius: 10px;
   padding: 10px;
+  font-weight: bold;
+  color: #553344;
 }
 
 nav button:hover {

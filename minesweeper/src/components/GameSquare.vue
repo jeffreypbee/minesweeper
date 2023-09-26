@@ -1,6 +1,6 @@
 <template>
   <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare" @contextmenu.prevent="toggleFlagged">
-    <div v-if="flagged">F</div>
+    <div v-if="flagged"><font-awesome-icon icon="fa-solid fa-flag" /></div>
     <div v-if="revealed" :style="{color: color}">{{ valueToDisplay }}</div>
   </div>
 </template>
@@ -62,13 +62,13 @@ export default {
 .gamesquare {
     width: 30px;
     height: 30px;
-    border: 1px solid darkred;
+    border: 1px solid transparent;
     background: linear-gradient(to bottom, yellow, goldenrod);
     margin: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #553344;
     font-weight: bold;
     font-size: 1.2rem;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
@@ -79,7 +79,7 @@ export default {
   background: unset;
 }
 
-.gamesquare:hover {
+.gamesquare:hover:not(.revealed) {
     cursor: pointer;
 }
 
