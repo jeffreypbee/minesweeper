@@ -23,8 +23,8 @@ export default {
     },
     color() {
       switch(this.value) {
-        case 1: return 'blue';
-        case 2: return 'green';
+        case 1: return 'cyan';
+        case 2: return 'lime';
         case 3: return 'yellow';
         case 4: return 'orange';
         case 5: return 'red';

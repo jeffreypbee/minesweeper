@@ -7,7 +7,10 @@ export default new Vuex.Store({
   state: {
     gameboard: [],
     revealed: [],
-    flagged: []
+    flagged: [],
+    numberOfMines: 0,
+    gameWon: false,
+    gameLost: false
   },
   getters: {
   },
@@ -22,7 +25,15 @@ export default new Vuex.Store({
       }
     },
     revealSquare(state, payload) {
+
+      // Reveal this square
       state.revealed.push(payload);
+
+      // Check if player won the game
+      if (state.gameboard.length - state.revealed.length == state.numberOfMines) {
+        state.gameWon = true;
+      }
+
       const x = payload.x;
       const y = payload.y;
       if (state.gameboard[x][y] === 0) {
@@ -53,7 +64,8 @@ export default new Vuex.Store({
       }
 
       // Calculate number of mines
-      let mineCount = payload.rows * payload.columns / 8;
+      let mineCount = Math.floor(payload.rows * payload.columns / 8);
+      state.numberOfMines = mineCount;
       console.log(mineCount);
 
       // Place mines in squares

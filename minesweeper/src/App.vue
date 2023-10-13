@@ -114,7 +114,7 @@ aside h2 {
 }
 
 .gradientbg {
-  background: linear-gradient(to bottom, #0001, #0004);
+  background: linear-gradient(to bottom, #0003, #0006);
   padding: 10px;
   border-radius: 20px;
 }
