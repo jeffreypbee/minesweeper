@@ -16,7 +16,7 @@ export default {
     width: 100%;
     height: 100px;
     top: calc(50% - 30%);
-    background-color: #2228;
+    background: linear-gradient(transparent, #0003, transparent);
     display: flex;
     justify-content: center;
     align-items: center;

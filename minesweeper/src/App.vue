@@ -4,6 +4,7 @@
       <h1>MINESWEEPER</h1>
       <nav>
         <button @click="newGame()">New Game</button>
+        <button @click="showRules = !showRules">Rules</button>
       </nav>
     </header>
     
@@ -13,6 +14,18 @@
     <main>
       <router-view/>
     </main>
+
+    <div id="rules" v-if="showRules">
+      <h1>Rules</h1>
+      <ul>
+        <li>Left-click on a square to reveal it.</li>
+        <li>A square with a number tells you how many mines it touches (including on the diagonal).</li>
+        <li>Right-click on a square to flag it as a mine.</li>
+        <li>Revealing a square with a mine means game over!</li>
+        <li>Win the game by revealing all squares that aren't mines.</li>
+      </ul>
+      <button @click="showRules = false">Got It!</button>
+    </div>
     
     <footer></footer>
   </div>
@@ -24,6 +37,11 @@ import GameOverMessage from './components/GameOverMessage.vue'
 export default {
   components: {
     GameOverMessage
+  },
+  data() {
+    return {
+      showRules: true
+    }
   },
   methods: {
     newGame() {
@@ -81,16 +99,17 @@ h1 {
   background-clip: text;
 }
 
-nav button {
+button {
   background: linear-gradient(to bottom, yellow, goldenrod);
   border: none;
   border-radius: 10px;
   padding: 10px;
   font-weight: bold;
   color: #553344;
+  margin: 5px 10px;
 }
 
-nav button:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -135,5 +154,35 @@ aside h2 {
   background: linear-gradient(to bottom, #0003, #0006);
   padding: 10px;
   border-radius: 20px;
+}
+
+#rules {
+  position: absolute;
+  height: auto;
+  width: 50%;
+  border-radius: 20px;
+  padding: 20px;
+  border: 3px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #171125;
+  background-image: linear-gradient(to bottom, #33114400, #553344ff);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#rules ul {
+  padding: 20px;
+  background: linear-gradient(to bottom, yellow, goldenrod);
+  color: black;
+  border-radius: 20px;
+}
+
+#rules ul li {
+  margin: 10px;
 }
 </style>
