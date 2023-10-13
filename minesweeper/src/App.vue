@@ -3,7 +3,7 @@
     <header>
       <h1>MINESWEEPER</h1>
       <nav>
-        <button>New Game</button>
+        <button @click="newGame()">New Game</button>
       </nav>
     </header>
     
@@ -14,6 +14,16 @@
     <footer>Copyright &copy; 2023 Jeffrey Bee</footer>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    newGame() {
+      this.$store.commit('createGameboard', {rows: 10, columns: 10});
+    }
+  }
+}
+</script>
 
 <style>
 body {

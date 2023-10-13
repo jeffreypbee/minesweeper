@@ -53,6 +53,14 @@ export default new Vuex.Store({
       }
     },
     createGameboard(state, payload) {
+      // Clear game state
+      state.gameboard = [];
+      state.revealed = [];
+      state.flagged = [];
+      state.numberOfMines = 0;
+      state.gameWon = false;
+      state.gameLost = false;
+
       let arr = [];
 
       // Create two-dimensional array
