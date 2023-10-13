@@ -7,16 +7,24 @@
       </nav>
     </header>
     
+    <GameOverMessage v-if="$store.getters.gameLost" message="Game Over" />
+    <GameOverMessage v-if="$store.getters.gameWon" message="You Win" />
+
     <main>
       <router-view/>
     </main>
     
-    <footer>Copyright &copy; 2023 Jeffrey Bee</footer>
+    <footer></footer>
   </div>
 </template>
 
 <script>
+import GameOverMessage from './components/GameOverMessage.vue'
+
 export default {
+  components: {
+    GameOverMessage
+  },
   methods: {
     newGame() {
       this.$store.commit('createGameboard', {rows: 10, columns: 10});
@@ -59,7 +67,7 @@ header {
   align-items: center;
 }
 
-header h1 {
+h1 {
   grid-area: header;
   font-family: Impact;
   font-weight: 800;

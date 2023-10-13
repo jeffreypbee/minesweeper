@@ -9,10 +9,27 @@ export default new Vuex.Store({
     revealed: [],
     flagged: [],
     numberOfMines: 0,
-    gameWon: false,
     gameLost: false
   },
   getters: {
+    gameLost(state) {
+      return state.gameLost;
+    },
+    gameWon(state, getters) {
+      if (state.numberOfMines + state.revealed.length === getters.numberOfSquares) {
+        return true;
+      }
+      return false;
+    },
+    gameOver(state, getters) {
+      return state.gameLost || getters.gameWon;
+    },
+    numberOfSquares(state) {
+      if (state.gameboard.length > 0) {
+        return state.gameboard.length * state.gameboard[0].length;
+      }
+      return 0;
+    }
   },
   mutations: {
     toggleFlagged(state, payload) {
@@ -29,13 +46,11 @@ export default new Vuex.Store({
       // Reveal this square
       state.revealed.push(payload);
 
-      // Check if player won the game
-      if (state.gameboard.length - state.revealed.length == state.numberOfMines) {
-        state.gameWon = true;
-      }
-
       const x = payload.x;
       const y = payload.y;
+      if (state.gameboard[x][y] === 'X') {
+        state.gameLost = true;
+      }
       if (state.gameboard[x][y] === 0) {
         for (let i = x-1; i < x+2; i++) {
           if (i >= 0 && i < state.gameboard.length) {

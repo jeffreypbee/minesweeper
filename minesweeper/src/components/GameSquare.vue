@@ -1,5 +1,5 @@
 <template>
-  <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare" @contextmenu.prevent="toggleFlagged">
+  <div class="gamesquare" :class="{revealed : revealed}" @click="revealSquare()" @contextmenu.prevent="toggleFlagged()">
     <div v-if="flagged"><font-awesome-icon icon="fa-solid fa-flag" /></div>
     <div v-if="revealed" :style="{color: color}">{{ valueToDisplay }}</div>
   </div>
@@ -30,20 +30,20 @@ export default {
         case 5: return 'red';
         case 6: return 'purple';
         case 7: return 'pink';
-        default: return 'black';
+        default: return 'red';
       }
     }
   },
   methods: {
     toggleFlagged() {
-      if (!this.revealed) {
+      if (!this.revealed && !this.$store.getters.gameOver) {
         const x = this.x;
         const y = this.y;
         this.$store.commit('toggleFlagged', {x, y});
       }      
     },
     revealSquare() {
-      if (!this.flagged) {
+      if (!this.flagged && !this.$store.getters.gameOver) {
         const x = this.x;
         const y = this.y;
         this.$store.commit('revealSquare', {x, y});
